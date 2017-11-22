@@ -6,7 +6,7 @@
  int check(string);
  void dop(string&s);
  void  detect_instruction(string &s);
-
+ string detect_operand(string &s);
 
 int main(int argc,char*argv[])
 {
