@@ -770,3 +770,31 @@ void detect_instruction(string&s)
 	if (s.find("[", 0) != -1) create_matrix(s);
 	else dop(s);
 }
+string detect_operand(string &s)
+{
+string m;
+// remove ;
+if (s[s.length() - 1] == ';')
+s.erase(s.length() - 1, 1);
+// remove (A = )
+for (int i = 0;i < s.length();i++)
+{
+if (s[i] == '=')
+{
+s = (s[i + 1] == ' ') ? s.substr(i + 2, s.length() - 1 - i) : s.substr(i + 1, s.length()
+- 1 - i);
+break;
+}
+}
+cout << s<<"\n";
+// for const
+if (s.find_first_not_of("0123456789.") == string::npos)
+return "const";
+//for matrix
+else if ((s.find('[') != string::npos)||(s.find("rand") != string::npos)||(s.find("eye") !=
+string::npos)||(s.find("ones") != string::npos)||(s.find("zeros") != string::npos))
+return "matrix";
+else
+return "temp";
+}
+
