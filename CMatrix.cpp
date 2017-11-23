@@ -786,7 +786,6 @@ s = (s[i + 1] == ' ') ? s.substr(i + 2, s.length() - 1 - i) : s.substr(i + 1, s.
 break;
 }
 }
-cout << s<<"\n";
 // for const
 if (s.find_first_not_of("0123456789.") == string::npos)
 return "const";
